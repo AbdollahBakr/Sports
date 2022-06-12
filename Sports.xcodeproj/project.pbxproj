@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1421876328568E2600321378 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421876228568E2600321378 /* TeamDetailsViewController.swift */; };
 		142266B4285411CF005E46FD /* LeagueDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142266B3285411CF005E46FD /* LeagueDetailsViewModel.swift */; };
 		142266B62854125C005E46FD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142266B52854125C005E46FD /* Event.swift */; };
 		142266B928541C7B005E46FD /* LatestResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142266B828541C7B005E46FD /* LatestResultsCollectionViewCell.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1421876228568E2600321378 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		142266B3285411CF005E46FD /* LeagueDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsViewModel.swift; sourceTree = "<group>"; };
 		142266B52854125C005E46FD /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		142266B828541C7B005E46FD /* LatestResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestResultsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				142266B828541C7B005E46FD /* LatestResultsCollectionViewCell.swift */,
 				142266BA28542A3D005E46FD /* TeamsCollectionViewCell.swift */,
 				142E21CD2855931800F734F2 /* LatestResultsCollectionViewCell.xib */,
+				1421876228568E2600321378 /* TeamDetailsViewController.swift */,
 			);
 			path = LeagueDetails;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				1499CB2F284CF85E004FBA4F /* SceneDelegate.swift in Sources */,
 				142266B4285411CF005E46FD /* LeagueDetailsViewModel.swift in Sources */,
 				1499CB46284CFF0A004FBA4F /* SportsCollectionViewController.swift in Sources */,
+				1421876328568E2600321378 /* TeamDetailsViewController.swift in Sources */,
 				148E7E80284D433300C4E012 /* League.swift in Sources */,
 				148E7E78284D13C200C4E012 /* SplashViewController.swift in Sources */,
 				14D0912C285287DB0041CC3A /* UpcomingEventsCollectionViewCell.swift in Sources */,

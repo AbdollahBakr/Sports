@@ -155,4 +155,11 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
         
         return CGSize(width: width, height: height)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailsVC = storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
+        detailsVC.selectedTeam = teams[indexPath.row]
+
+        present(detailsVC, animated: true)
+    }
 }
