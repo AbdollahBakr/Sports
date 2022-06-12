@@ -31,6 +31,10 @@ class LeagueDetailsViewController: UIViewController {
         teamsCollectionView.delegate = self
         teamsCollectionView.dataSource = self
         
+        // Register LatestResultsCollectionViewCell from XIB
+        let latestResultsNipCell = UINib(nibName: "LatestResultsCollectionViewCell", bundle: nil)
+        latestResultsCollectionView.register(latestResultsNipCell, forCellWithReuseIdentifier: LatestResultsCollectionViewCell.identifier)
+        
         // Start Indicator animated
         indicator.center = view.center
         view.addSubview(indicator)
@@ -102,6 +106,13 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  LatestResultsCollectionViewCell.identifier, for: indexPath) as? LatestResultsCollectionViewCell else { return LatestResultsCollectionViewCell()}
             
+            cell.homeTeamLabel.text = events[indexPath.row].strHomeTeam
+            cell.awayTeamLabel.text = events[indexPath.row].strAwayTeam
+            cell.homeScoreLabel.text = events[indexPath.row].intHomeScore
+            cell.awayScoreLabel.text = events[indexPath.row].intAwayScore
+            cell.dateLabel.text = events[indexPath.row].dateEventLocal
+            cell.timeLabel.text = events[indexPath.row].strTimeLocal
+            
             let imageUrl = URL(string: events[indexPath.row].strThumb ?? "")
             cell.latestResultsImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))
             
@@ -109,6 +120,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  TeamsCollectionViewCell.identifier, for: indexPath) as? TeamsCollectionViewCell else { return TeamsCollectionViewCell()}
+            
             
             let imageUrl = URL(string: teams[indexPath.row].strTeamBadge!)
             cell.teamImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))
@@ -131,8 +143,8 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
            
         } else if collectionView == self.latestResultsCollectionView {
 
-            width = collectionView.frame.size.width/1.5
-            height = collectionView.frame.size.height/1.5
+            width = collectionView.frame.size.width//1.5
+            height = collectionView.frame.size.height//1.5
 
         } else {
             height = collectionView.frame.size.height/1.5
