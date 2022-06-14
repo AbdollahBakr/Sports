@@ -12,6 +12,7 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var upcomingEventsCollectionView: UICollectionView!
     @IBOutlet weak var latestResultsCollectionView: UICollectionView!
     @IBOutlet weak var teamsCollectionView: UICollectionView!
+    @IBOutlet weak var addToFavoritesButton: UIButton!
     
     // Properties
     let indicator = UIActivityIndicatorView(style: .large)
@@ -61,6 +62,8 @@ class LeagueDetailsViewController: UIViewController {
         viewModel.getAllEvents(forLeagueId: selectedLeague?.idLeague ?? "")
         // Fetch all teams
         viewModel.getAllTeams(forLeague: selectedLeague?.strLeague ?? "")
+        // Hide addToFavorites button if selectedLeague is a favorite league
+        addToFavoritesButton.isHidden = viewModel.isFavoriteLeague(league: selectedLeague ?? League())
     }
     
 
@@ -73,7 +76,10 @@ class LeagueDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func addLeagueToFavorites(_ sender: Any) {
+        viewModel.saveLeagueToFavorites(league: selectedLeague ?? League())
+    }
+    
 }
 
 extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

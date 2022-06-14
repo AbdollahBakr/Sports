@@ -12,7 +12,7 @@
         <!--Favorite Leagues-->
         <scene sceneID="MBa-vR-U0f">
             <objects>
-                <tableViewController title="Favorite Leagues" id="Jia-sf-4eu" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FavoriteLeaguesTableViewController" title="Favorite Leagues" id="Jia-sf-4eu" customClass="FavoriteLeaguesTableViewController" customModule="Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pnb-wu-vMJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,11 +22,11 @@
                             <outlet property="delegate" destination="Jia-sf-4eu" id="L3w-GA-FyJ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorite Leagues" image="star.fill" catalog="system" id="jiZ-NN-LGU"/>
+                    <navigationItem key="navigationItem" title="Favorite Leagues" id="op9-xF-WB2"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7m-ZK-9Qg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="210" y="368"/>
+            <point key="canvasLocation" x="1118.840579710145" y="367.63392857142856"/>
         </scene>
         <!--Sports Collection View Controller-->
         <scene sceneID="LRZ-0w-jAp">
@@ -234,6 +234,9 @@
                                 <rect key="frame" x="348.5" y="64" width="45.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="addLeagueToFavorites:" destination="pyd-xU-RlU" eventType="touchUpInside" id="eTn-7m-l80"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHN-Da-kqr">
                                 <rect key="frame" x="20" y="303" width="374" height="30"/>
@@ -284,6 +287,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToFavoritesButton" destination="mzO-vi-7h2" id="Zs6-Le-Hwp"/>
                         <outlet property="latestResultsCollectionView" destination="g9u-bo-yDq" id="MlQ-4T-d5F"/>
                         <outlet property="teamsCollectionView" destination="RPi-ZV-Zmj" id="3ri-rN-PCo"/>
                         <outlet property="upcomingEventsCollectionView" destination="phO-2z-LuN" id="Bnc-aP-grn"/>
@@ -412,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puT-jt-KEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1958" y="350"/>
+            <point key="canvasLocation" x="2868.115942028986" y="349.55357142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GWb-RS-Tzi">
@@ -425,7 +429,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="cLL-Yf-EEr" kind="relationship" relationship="viewControllers" id="Gqa-JE-FGI"/>
-                        <segue destination="Jia-sf-4eu" kind="relationship" relationship="viewControllers" id="GRA-VL-AhJ"/>
+                        <segue destination="tAv-cv-HWJ" kind="relationship" relationship="viewControllers" id="GRA-VL-AhJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9k-0F-ymX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -450,6 +454,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0RD-2l-dZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="208.69565217391306" y="-294.64285714285711"/>
+        </scene>
+        <!--Favorite Leagues-->
+        <scene sceneID="hzb-5h-XjF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tAv-cv-HWJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite Leagues" image="star.fill" catalog="system" id="jiZ-NN-LGU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="LTs-3d-ZwS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jia-sf-4eu" kind="relationship" relationship="rootViewController" id="kC1-aB-Tsj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPv-tN-kxK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="208.69565217391306" y="367.63392857142856"/>
         </scene>
     </scenes>
     <resources>

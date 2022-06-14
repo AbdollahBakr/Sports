@@ -8,10 +8,6 @@
 import UIKit
 import youtube_ios_player_helper //move to the view controller
 
-protocol LeagueTableViewCellDelegate {
-    func didTapYoutubeButton(with link: String)
-}
-
 class LeagueTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leagueCellImageView: UIImageView!
