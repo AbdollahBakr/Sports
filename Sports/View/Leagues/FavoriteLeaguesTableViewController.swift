@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Reachability
 
 class FavoriteLeaguesTableViewController: UITableViewController {
     
@@ -116,7 +117,34 @@ class FavoriteLeaguesTableViewController: UITableViewController {
         }    
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Check for internet connection
+        let reachability = try! Reachability()
+        if reachability.connection != .unavailable {
+            // Go to leagueDetailsVC
+            let detailsVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesDetailsViewController") as! LeagueDetailsViewController
+            detailsVC.selectedLeague = leagues[indexPath.row]
 
+            present(detailsVC, animated: true)
+        } else {
+            // Alert user in case there is no internet connection
+            showAlertCellSelectedWithNoInternet()
+        }
+        
+    }
+    
+    @IBAction func showAlertCellSelectedWithNoInternet() {
+
+            // create alert
+        let alert = UIAlertController(title: "No Internet", message: "Check your internet connection!", preferredStyle: .alert)
+
+            // Add an action with OK button
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+            // Show alert
+            self.present(alert, animated: true)
+        }
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
