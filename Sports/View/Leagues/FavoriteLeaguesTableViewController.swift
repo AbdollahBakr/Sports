@@ -33,6 +33,13 @@ class FavoriteLeaguesTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self?.leagues = (self?.viewModel.leagues)!
                 self?.tableView.reloadData()
+                
+                // Notify user if the favorites leagues are empty
+                if self?.leagues.count == 0 {
+                    self?.notifyIfNoFavorites()
+                } else {
+                    self?.tableView.backgroundView = nil
+                }
             }
         }
         // Fetch favorite leagues
@@ -42,6 +49,7 @@ class FavoriteLeaguesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getFavoriteLeagues()
         tableView.reloadData()
+        notifyIfNoFavorites()
     }
     // MARK: - Table view data source
 
@@ -52,21 +60,26 @@ class FavoriteLeaguesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if leagues.count == 0 {
-            displayNoFavoritesYet()
-        }
+        
         return leagues.count
     }
     
-    func displayNoFavoritesYet(){
-        let noFavoritesLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-        
-        noFavoritesLabel.text          = "No Favorite Leagues have been added yet. \nYou can add league to favorites in the details page"
-        noFavoritesLabel.textColor     = UIColor.darkGray
-        noFavoritesLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-        noFavoritesLabel.numberOfLines = 0
-        noFavoritesLabel.textAlignment = .center
-        tableView.backgroundView  = noFavoritesLabel
+    func notifyIfNoFavorites(){
+        // Notify user if the favorites leagues are empty
+        if leagues.count == 0 {
+            // Add message label if there are no favorite leagues
+            let noFavoritesLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            
+            noFavoritesLabel.text          = "Favorite Leagues are empty. \nYou can add league to favorites in the details page"
+            noFavoritesLabel.textColor     = UIColor.darkGray
+            noFavoritesLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+            noFavoritesLabel.numberOfLines = 0
+            noFavoritesLabel.textAlignment = .center
+            tableView.backgroundView  = noFavoritesLabel
+        } else {
+            // Remove message label otherwise
+            tableView.backgroundView = nil
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +124,9 @@ class FavoriteLeaguesTableViewController: UITableViewController {
             
             // Refresh the tableView
             tableView.reloadData()
+            
+            // Notify if there are no favorite leagues
+            notifyIfNoFavorites()
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
