@@ -51,9 +51,22 @@ class FavoriteLeaguesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if leagues.count == 0 {
+            displayNoFavoritesYet()
+        }
         return leagues.count
     }
-
+    
+    func displayNoFavoritesYet(){
+        let noFavoritesLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        
+        noFavoritesLabel.text          = "No Favorite Leagues have been added yet. \nYou can add league to favorites in the details page"
+        noFavoritesLabel.textColor     = UIColor.darkGray
+        noFavoritesLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        noFavoritesLabel.numberOfLines = 0
+        noFavoritesLabel.textAlignment = .center
+        tableView.backgroundView  = noFavoritesLabel
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LeagueTableViewCell.identifier, for: indexPath) as? LeagueTableViewCell else { return LeagueTableViewCell()}
@@ -97,6 +110,7 @@ class FavoriteLeaguesTableViewController: UITableViewController {
             
             // Refresh the tableView
             tableView.reloadData()
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
