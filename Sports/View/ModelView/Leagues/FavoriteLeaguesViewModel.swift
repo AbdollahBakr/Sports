@@ -43,4 +43,22 @@ class FavoriteLeaguesViewModel {
             print(error)
         }
     }
+    
+    func deleteLeagueFromFavorites(league: League) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LeagueEntity")
+        let selectedLeagueId = NSPredicate(format: "idLeague == %@", league.idLeague ?? "")
+        fetchRequest.predicate = selectedLeagueId
+        
+        do {
+            let favoriteLeagues = try managedContext.fetch(fetchRequest)
+            if favoriteLeagues.count > 0 {
+                managedContext.delete(favoriteLeagues.first!)
+                appDelegate.saveContext()
+            }
+            
+        } catch let error as NSError
+        {
+            print(error)
+        }
+    }
 }
