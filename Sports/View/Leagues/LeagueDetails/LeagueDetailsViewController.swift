@@ -78,6 +78,8 @@ class LeagueDetailsViewController: UIViewController {
     */
     @IBAction func addLeagueToFavorites(_ sender: Any) {
         viewModel.saveLeagueToFavorites(league: selectedLeague ?? League())
+        let senderButton = sender as! UIButton
+        senderButton.isHidden = true
     }
     
 }
