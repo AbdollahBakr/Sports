@@ -34,9 +34,10 @@ class LeagueDetailsViewModel {
     }
     
     func getAllTeams(forLeague: String) {
-//        let urlParameter = forLeague.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let urlParameter = forLeague.replacingOccurrences(of: " ", with: "%20")
-        NetworkService.fetchDecodableFromAPI(genericType: TeamsResponse.self, urlStr: "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l=\(urlParameter)", callBack: {[weak self] (response) in
+        let rawUrlStr = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l=\(forLeague)"
+        let encodedUrlStr: String = rawUrlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+
+        NetworkService.fetchDecodableFromAPI(genericType: TeamsResponse.self, urlStr: encodedUrlStr, callBack: {[weak self] (response) in
             self?.teams = response?.teams
         })
     }
