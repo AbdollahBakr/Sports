@@ -130,7 +130,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  TeamsCollectionViewCell.identifier, for: indexPath) as? TeamsCollectionViewCell else { return TeamsCollectionViewCell()}
             
             
-            let imageUrl = URL(string: teams[indexPath.row].strTeamBadge!)
+            let imageUrl = URL(string: teams[indexPath.row].strTeamBadge ?? "")
             cell.teamImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))
             
             // // Configure cell image view for circular image
