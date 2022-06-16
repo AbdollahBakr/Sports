@@ -29,7 +29,9 @@ class LeagueDetailsViewModel {
     
     func getAllEvents(forLeagueId: String) {
         NetworkService.fetchDecodableFromAPI(genericType: EventsResponse.self, urlStr: "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=\(forLeagueId)", callBack: {[weak self] (response) in
-            self?.events = response?.events
+            self?.events = response?.events.filter {
+                self?.isFutureDate(dateEvent: $0.dateEvent ?? "", strTime: $0.strTime ?? "") ?? false
+            }
         })
     }
     
@@ -75,4 +77,20 @@ class LeagueDetailsViewModel {
         }
         return foundAsFavoriteLeague
     }
+    
+    // Filter upcoming events
+    func isFutureDate(dateEvent: String, strTime: String) -> Bool {
+        let dateStr = dateEvent + " " + strTime
+        print(dateStr)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let eventDateTime = formatter.date(from: dateStr)
+        
+        // In case of invalid format from API, return false
+        return eventDateTime ?? Date.now > Date.now
+    }
+    
+    // Sort upcoming events (no need to sort, they are already sorted)
+
 }
