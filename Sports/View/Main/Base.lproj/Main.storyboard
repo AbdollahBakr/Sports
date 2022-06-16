@@ -373,23 +373,16 @@
             </objects>
             <point key="canvasLocation" x="3358" y="-295"/>
         </scene>
-        <!--Player View Controller-->
+        <!--Youtube View Controller-->
         <scene sceneID="xs3-O3-Nru">
             <objects>
-                <viewController storyboardIdentifier="PlayerViewController" id="PBi-3D-b9n" customClass="PlayerViewController" customModule="Sports" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YoutubeViewController" id="PBi-3D-b9n" customClass="YoutubeViewController" customModule="Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lqk-gx-7J7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGr-hm-aJC" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="562" width="414" height="300"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="WkJ-U1-NmO"/>
-                                </constraints>
-                            </view>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-lY-Nbr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="518"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -401,17 +394,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fGf-lY-Nbr" firstAttribute="leading" secondItem="4FA-89-RJu" secondAttribute="leading" id="6tj-l1-AO4"/>
-                            <constraint firstItem="yGr-hm-aJC" firstAttribute="leading" secondItem="4FA-89-RJu" secondAttribute="leading" id="7Ao-Ss-wVv"/>
                             <constraint firstItem="fGf-lY-Nbr" firstAttribute="top" secondItem="4FA-89-RJu" secondAttribute="top" id="BFC-zJ-wcv"/>
-                            <constraint firstItem="4FA-89-RJu" firstAttribute="trailing" secondItem="yGr-hm-aJC" secondAttribute="trailing" id="UAP-vQ-ArC"/>
                             <constraint firstItem="4FA-89-RJu" firstAttribute="trailing" secondItem="fGf-lY-Nbr" secondAttribute="trailing" id="Wd9-tB-IE7"/>
-                            <constraint firstItem="4FA-89-RJu" firstAttribute="bottom" secondItem="yGr-hm-aJC" secondAttribute="bottom" id="dLi-8Z-V9y"/>
-                            <constraint firstItem="yGr-hm-aJC" firstAttribute="top" secondItem="fGf-lY-Nbr" secondAttribute="bottom" id="fhK-c2-ygJ"/>
+                            <constraint firstItem="4FA-89-RJu" firstAttribute="bottom" secondItem="fGf-lY-Nbr" secondAttribute="bottom" id="dCb-B9-BFX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="playerView" destination="yGr-hm-aJC" id="lNZ-um-eoB"/>
-                        <outlet property="playerWKWebView" destination="fGf-lY-Nbr" id="9fd-eS-KEu"/>
+                        <outlet property="youtubeWKWebView" destination="fGf-lY-Nbr" id="9fd-eS-KEu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puT-jt-KEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

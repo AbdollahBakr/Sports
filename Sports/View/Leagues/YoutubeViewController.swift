@@ -8,10 +8,9 @@
 import UIKit
 import youtube_ios_player_helper
 
-class PlayerViewController: UIViewController {
+class YoutubeViewController: UIViewController {
     
-    @IBOutlet weak var playerWKWebView: WKWebView!
-    @IBOutlet var playerView: YTPlayerView!
+    @IBOutlet weak var youtubeWKWebView: WKWebView!
     
     var videoID: String!
     
@@ -22,7 +21,7 @@ class PlayerViewController: UIViewController {
 //        playerView.load(withVideoId: videoID)
         guard let myURL = URL(string: "https://\(videoID ?? "")") else { return }
         let myRequest = URLRequest(url: myURL)
-        playerWKWebView.load(myRequest)
+        youtubeWKWebView.load(myRequest)
     }
     
 

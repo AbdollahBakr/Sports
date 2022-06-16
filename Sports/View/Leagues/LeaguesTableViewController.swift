@@ -150,17 +150,11 @@ class LeaguesTableViewController: UITableViewController {
 
 extension LeaguesTableViewController: LeagueTableViewCellDelegate {
     func didTapYoutubeButton(with link: String) {
-//        guard let url = URL(string: link) else { return }
-//        UIApplication.shared.open(url)
         print("\(link)")
-//        print("\(getYoutubeId(youtubeUrl: link))")
-        let playerVC = storyboard?.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
+        let playerVC = storyboard?.instantiateViewController(withIdentifier: "YoutubeViewController") as! YoutubeViewController
         playerVC.videoID = link
         present(playerVC, animated: true)
         
     }
     
-    func getYoutubeId(youtubeUrl: String) -> String? {
-        return URLComponents(string: youtubeUrl)?.queryItems?.first(where: { $0.name == "v" })?.value
-    }
 }

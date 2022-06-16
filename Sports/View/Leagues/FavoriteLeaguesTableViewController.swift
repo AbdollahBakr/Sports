@@ -194,7 +194,7 @@ extension FavoriteLeaguesTableViewController: LeagueTableViewCellDelegate {
 //        UIApplication.shared.open(url)
         print("\(link)")
 //        print("\(getYoutubeId(youtubeUrl: link))")
-        let playerVC = storyboard?.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
+        let playerVC = storyboard?.instantiateViewController(withIdentifier: "YoutubeViewController") as! YoutubeViewController
         playerVC.videoID = link
         present(playerVC, animated: true)
         
