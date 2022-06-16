@@ -1,6 +1,8 @@
-![alt text](https://github.com/AbdollahBakr/Sports/blob/main/Sports/Assets.xcassets/sportsLogo.imageset/sportsLogo.jpg?raw=true)
+<img src="https://github.com/AbdollahBakr/Sports/blob/main/Sports/Assets.xcassets/sportsLogo.imageset/sportsLogo.jpg" width="100">
+
 
 # Sports App
+![alt text](https://github.com/AbdollahBakr/Sports/blob/main/Sports/screenshot.png?raw=true)
 Sports final swift project, as part of the ITI-IOS intensive program
 
 ## Description
