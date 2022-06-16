@@ -174,9 +174,14 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailsVC = storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
-        detailsVC.selectedTeam = teams[indexPath.row]
+        
+        // Only if team cell is selected
+        if collectionView == self.teamsCollectionView {
+            let detailsVC = storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
+            detailsVC.selectedTeam = teams[indexPath.row]
 
-        present(detailsVC, animated: true)
+            present(detailsVC, animated: true)
+        }
+        
     }
 }
