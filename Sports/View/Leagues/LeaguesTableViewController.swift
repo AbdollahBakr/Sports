@@ -66,16 +66,23 @@ class LeaguesTableViewController: UITableViewController {
         cell.delegate = self
         cell.leagueNameLabel.text = leagues[indexPath.row].strLeague
         cell.youtubeStr = leagues[indexPath.row].strYoutube
-        let imageUrl = URL(string: leagues[indexPath.row].strBadge!)
-//        cell.leagueCellImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"), options: [.processor(RoundCornerImageProcessor(cornerRadius: (cell.leagueCellImageView.frame.size.width)/2))])
-//        let processor = RoundCornerImageProcessor(cornerRadius: 20)
-        cell.leagueCellImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))//), options: [.processor(processor)])
         
-        // Configure cell image view
+
+        // Set cell imageView with league badge
+        let imageUrl = URL(string: leagues[indexPath.row].strBadge!)
+        cell.leagueCellImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))
+        
+        // with processor
+//        let resizingProcessor = ResizingImageProcessor(referenceSize: CGSize(width: 70, height: 70))//cell.leagueCellImageView.frame.size)
+//        let roundProcessor = RoundCornerImageProcessor(cornerRadius: 35)//cell.leagueCellImageView.frame.size.width / 2)
+//        cell.leagueCellImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"), options: [.processor(resizingProcessor), .processor(roundProcessor)])
+        
+        // Configure cell image view for circular image with border
         cell.leagueCellImageView.layer.cornerRadius = 35
         cell.leagueCellImageView.layer.masksToBounds = true
         cell.leagueCellImageView.layer.borderWidth = 2;
         cell.leagueCellImageView.layer.borderColor = CGColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+        
         return cell
     }
     

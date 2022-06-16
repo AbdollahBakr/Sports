@@ -133,6 +133,11 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             let imageUrl = URL(string: teams[indexPath.row].strTeamBadge!)
             cell.teamImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))
             
+            // // Configure cell image view for circular image
+            cell.teamImageView.contentMode = .scaleAspectFit
+            cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2.3
+            cell.teamImageView.layer.masksToBounds = true
+            
             return cell
         }
         
