@@ -90,6 +90,12 @@ class FavoriteLeaguesTableViewController: UITableViewController {
         cell.delegate = self
         cell.leagueNameLabel.text = leagues[indexPath.row].strLeague
         cell.youtubeStr = leagues[indexPath.row].strYoutube
+        
+        // Hide youtube button if there is no associated youtube link
+        if (cell.youtubeStr ?? "").isEmpty {
+            cell.youtubeButton.isHidden = true
+        }
+        
         let imageUrl = URL(string: leagues[indexPath.row].strBadge!)
 
         cell.leagueCellImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))//), options: [.processor(processor)])
