@@ -121,47 +121,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="phO-2z-LuN">
-                                <rect key="frame" x="0.0" y="114" width="414" height="179"/>
+                                <rect key="frame" x="0.0" y="130" width="414" height="179"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eFx-5j-hBY">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UpcomingEventsCollectionViewCell" id="jAi-Jp-NVN" customClass="UpcomingEventsCollectionViewCell" customModule="Sports" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="25.5" width="128" height="128"/>
+                                        <rect key="frame" x="10" y="25.5" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oeK-03-PAl">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nm8-na-XA1">
-                                                    <rect key="frame" x="10" y="20" width="108" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="10" y="24" width="108" height="16"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="16"/>
+                                                    <color key="textColor" red="0.94901960784313721" green="0.92156862745098034" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yX9-5k-PbB">
-                                                    <rect key="frame" x="10" y="55.5" width="108" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="10" y="55" width="108" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="14"/>
+                                                    <color key="textColor" red="0.94901960784313721" green="0.92156862745098034" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pis-8L-7Hj">
-                                                    <rect key="frame" x="0.0" y="91.5" width="128" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="0.0" y="84" width="128" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="14"/>
+                                                    <color key="textColor" red="0.94901960784313721" green="0.92156862745098034" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.48627450980392156" green="0.24313725490196078" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="Nm8-na-XA1" firstAttribute="leading" secondItem="oeK-03-PAl" secondAttribute="leading" constant="10" id="1UP-5H-jeS"/>
                                                 <constraint firstAttribute="trailing" secondItem="Nm8-na-XA1" secondAttribute="trailing" constant="10" id="8ok-yU-peP"/>
                                                 <constraint firstItem="Pis-8L-7Hj" firstAttribute="leading" secondItem="oeK-03-PAl" secondAttribute="leading" id="9Lx-sg-w8n"/>
                                                 <constraint firstItem="yX9-5k-PbB" firstAttribute="leading" secondItem="oeK-03-PAl" secondAttribute="leading" constant="10" id="JYB-Hr-mWU"/>
-                                                <constraint firstItem="Nm8-na-XA1" firstAttribute="top" secondItem="oeK-03-PAl" secondAttribute="top" constant="20" id="QAP-rM-X7R"/>
+                                                <constraint firstItem="Nm8-na-XA1" firstAttribute="top" secondItem="oeK-03-PAl" secondAttribute="top" constant="24" id="QAP-rM-X7R"/>
                                                 <constraint firstAttribute="trailing" secondItem="Pis-8L-7Hj" secondAttribute="trailing" id="l62-6b-bKI"/>
                                                 <constraint firstItem="Pis-8L-7Hj" firstAttribute="top" secondItem="yX9-5k-PbB" secondAttribute="bottom" constant="15" id="yW8-Rr-r3y"/>
                                                 <constraint firstItem="yX9-5k-PbB" firstAttribute="top" secondItem="Nm8-na-XA1" secondAttribute="bottom" constant="15" id="yzO-03-jFN"/>
@@ -176,17 +177,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Events" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgg-7r-pV7">
-                                <rect key="frame" x="20" y="64" width="134" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPCOMING EVENTS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgg-7r-pV7">
+                                <rect key="frame" x="20" y="76" width="155" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="76v-de-kAG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="16"/>
+                                <color key="textColor" red="0.14117647058823529" green="0.22745098039215686" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g9u-bo-yDq">
-                                <rect key="frame" x="0.0" y="343" width="414" height="290"/>
+                                <rect key="frame" x="0.0" y="383" width="414" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="San-Uz-OZN">
                                     <size key="itemSize" width="128" height="128"/>
@@ -199,6 +200,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RPi-ZV-Zmj">
                                 <rect key="frame" x="0.0" y="683" width="414" height="179"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="scrollIndicatorInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eQS-3l-NeG">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -231,29 +233,29 @@
                                 </cells>
                             </collectionView>
                             <button toolTip="Add to favorites" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzO-vi-7h2">
-                                <rect key="frame" x="322" y="56" width="72" height="62"/>
+                                <rect key="frame" x="322" y="52" width="72" height="62"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="addToFavorites"/>
                                 <connections>
                                     <action selector="addLeagueToFavorites:" destination="pyd-xU-RlU" eventType="touchUpInside" id="eTn-7m-l80"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHN-Da-kqr">
-                                <rect key="frame" x="20" y="303" width="374" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST RESULTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHN-Da-kqr">
+                                <rect key="frame" x="20" y="345" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Cyh-kw-k6Z"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="16"/>
+                                <color key="textColor" red="0.14117647058823529" green="0.22745098039215686" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCB-NV-lh8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAMS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCB-NV-lh8">
                                 <rect key="frame" x="20" y="653" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xFS-Rj-ZT0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="16"/>
+                                <color key="textColor" red="0.14117647058823529" green="0.22745098039215686" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -266,24 +268,24 @@
                             <constraint firstItem="RPi-ZV-Zmj" firstAttribute="height" secondItem="Ljk-Lp-iFa" secondAttribute="height" multiplier="1:5" id="7fo-rz-BpC"/>
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="trailing" secondItem="mzO-vi-7h2" secondAttribute="trailing" constant="20" id="7ma-mt-aCf"/>
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="trailing" secondItem="phO-2z-LuN" secondAttribute="trailing" id="Auh-Uz-NSU"/>
-                            <constraint firstItem="phO-2z-LuN" firstAttribute="top" secondItem="Xgg-7r-pV7" secondAttribute="bottom" constant="20" id="G3V-pE-ABe"/>
+                            <constraint firstItem="phO-2z-LuN" firstAttribute="top" secondItem="Xgg-7r-pV7" secondAttribute="bottom" constant="24" id="G3V-pE-ABe"/>
                             <constraint firstItem="phO-2z-LuN" firstAttribute="leading" secondItem="a4W-qC-vzM" secondAttribute="leading" id="Gck-fb-1sY"/>
                             <constraint firstAttribute="trailing" secondItem="EHN-Da-kqr" secondAttribute="trailing" constant="20" id="Q3S-5B-X18"/>
                             <constraint firstItem="phO-2z-LuN" firstAttribute="height" secondItem="Ljk-Lp-iFa" secondAttribute="height" multiplier="1:5" id="Rqh-Lg-ez4"/>
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="trailing" secondItem="nCB-NV-lh8" secondAttribute="trailing" constant="20" id="UPL-nL-n1T"/>
-                            <constraint firstItem="Xgg-7r-pV7" firstAttribute="top" secondItem="a4W-qC-vzM" secondAttribute="top" constant="20" id="VY7-D2-RAv"/>
+                            <constraint firstItem="Xgg-7r-pV7" firstAttribute="top" secondItem="a4W-qC-vzM" secondAttribute="top" constant="32" id="VY7-D2-RAv"/>
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="trailing" secondItem="RPi-ZV-Zmj" secondAttribute="trailing" id="Xfz-gk-HWN"/>
-                            <constraint firstItem="mzO-vi-7h2" firstAttribute="top" secondItem="a4W-qC-vzM" secondAttribute="top" constant="12" id="cIU-KQ-nS8"/>
+                            <constraint firstItem="mzO-vi-7h2" firstAttribute="top" secondItem="a4W-qC-vzM" secondAttribute="top" constant="8" id="cIU-KQ-nS8"/>
                             <constraint firstItem="RPi-ZV-Zmj" firstAttribute="top" secondItem="nCB-NV-lh8" secondAttribute="bottom" id="dDI-x9-gIi"/>
                             <constraint firstItem="Xgg-7r-pV7" firstAttribute="leading" secondItem="a4W-qC-vzM" secondAttribute="leading" constant="20" id="fAR-rw-phx"/>
                             <constraint firstItem="mzO-vi-7h2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xgg-7r-pV7" secondAttribute="trailing" constant="100" id="i3x-aY-s7T"/>
                             <constraint firstItem="EHN-Da-kqr" firstAttribute="leading" secondItem="a4W-qC-vzM" secondAttribute="leading" constant="20" id="icc-jH-Fec"/>
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="bottom" secondItem="RPi-ZV-Zmj" secondAttribute="bottom" id="lon-WH-tW6"/>
-                            <constraint firstItem="g9u-bo-yDq" firstAttribute="top" secondItem="EHN-Da-kqr" secondAttribute="bottom" constant="10" id="maD-mM-Eh7"/>
+                            <constraint firstItem="g9u-bo-yDq" firstAttribute="top" secondItem="EHN-Da-kqr" secondAttribute="bottom" constant="8" id="maD-mM-Eh7"/>
                             <constraint firstItem="nCB-NV-lh8" firstAttribute="top" secondItem="g9u-bo-yDq" secondAttribute="bottom" constant="20" id="rq9-vU-Ps0"/>
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="trailing" secondItem="g9u-bo-yDq" secondAttribute="trailing" id="teq-dH-fBX"/>
                             <constraint firstItem="nCB-NV-lh8" firstAttribute="leading" secondItem="a4W-qC-vzM" secondAttribute="leading" constant="20" id="uSv-M3-fh2"/>
-                            <constraint firstItem="EHN-Da-kqr" firstAttribute="top" secondItem="phO-2z-LuN" secondAttribute="bottom" constant="10" id="xYc-Yc-6QH"/>
+                            <constraint firstItem="EHN-Da-kqr" firstAttribute="top" secondItem="phO-2z-LuN" secondAttribute="bottom" constant="36" id="xYc-Yc-6QH"/>
                         </constraints>
                     </view>
                     <connections>

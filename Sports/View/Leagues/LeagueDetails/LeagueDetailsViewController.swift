@@ -112,6 +112,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             cell.eventDateLabel.text = upcomingEvents[indexPath.row].dateEventLocal
             cell.eventTimeLabel.text = upcomingEvents[indexPath.row].strTimeLocal
             
+            cell.layer.cornerRadius = 24
             return cell
             
         } else if collectionView == self.latestResultsCollectionView {
@@ -125,8 +126,10 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             cell.dateLabel.text = latestResults[indexPath.row].dateEventLocal
             cell.timeLabel.text = latestResults[indexPath.row].strTimeLocal
             
-            let imageUrl = URL(string: latestResults[indexPath.row].strThumb ?? "")
-            cell.latestResultsImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "versusIcon"))
+            
+            cell.latestResultsImageView.image = UIImage(named: "versusIcon")
+//            let imageUrl = URL(string: latestResults[indexPath.row].strThumb ?? "")
+//            cell.latestResultsImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "versusIcon"))
             
             return cell
             
@@ -139,7 +142,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             
             // // Configure cell image view for circular image
             cell.teamImageView.contentMode = .scaleAspectFit
-            cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2.3
+            cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.height / 3
             cell.teamImageView.layer.masksToBounds = true
             
             return cell
@@ -155,8 +158,8 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
         
         if collectionView == self.upcomingEventsCollectionView
          {
-            width = collectionView.frame.size.width / 2
-            height = width
+            width = (collectionView.frame.size.width / 2) - 15
+            height = collectionView.frame.size.height
            
         } else if collectionView == self.latestResultsCollectionView {
 
