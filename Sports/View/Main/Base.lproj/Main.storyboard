@@ -230,8 +230,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="Add to favorites" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzO-vi-7h2">
-                                <rect key="frame" x="322" y="64" width="72" height="62"/>
+                            <button toolTip="Add to favorites" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzO-vi-7h2">
+                                <rect key="frame" x="322" y="56" width="72" height="62"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="addToFavorites"/>
                                 <connections>
@@ -273,7 +273,7 @@
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="trailing" secondItem="nCB-NV-lh8" secondAttribute="trailing" constant="20" id="UPL-nL-n1T"/>
                             <constraint firstItem="Xgg-7r-pV7" firstAttribute="top" secondItem="a4W-qC-vzM" secondAttribute="top" constant="20" id="VY7-D2-RAv"/>
                             <constraint firstItem="a4W-qC-vzM" firstAttribute="trailing" secondItem="RPi-ZV-Zmj" secondAttribute="trailing" id="Xfz-gk-HWN"/>
-                            <constraint firstItem="mzO-vi-7h2" firstAttribute="top" secondItem="a4W-qC-vzM" secondAttribute="top" constant="20" id="cIU-KQ-nS8"/>
+                            <constraint firstItem="mzO-vi-7h2" firstAttribute="top" secondItem="a4W-qC-vzM" secondAttribute="top" constant="12" id="cIU-KQ-nS8"/>
                             <constraint firstItem="RPi-ZV-Zmj" firstAttribute="top" secondItem="nCB-NV-lh8" secondAttribute="bottom" id="dDI-x9-gIi"/>
                             <constraint firstItem="Xgg-7r-pV7" firstAttribute="leading" secondItem="a4W-qC-vzM" secondAttribute="leading" constant="20" id="fAR-rw-phx"/>
                             <constraint firstItem="mzO-vi-7h2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xgg-7r-pV7" secondAttribute="trailing" constant="100" id="i3x-aY-s7T"/>

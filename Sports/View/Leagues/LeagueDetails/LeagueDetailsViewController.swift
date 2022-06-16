@@ -18,6 +18,7 @@ class LeagueDetailsViewController: UIViewController {
     let indicator = UIActivityIndicatorView(style: .large)
     var viewModel: LeagueDetailsViewModel!
     var events = [Event]()
+    var upcomingEvents = [Event]()
     var teams = [Team]()
     var selectedLeague: League?
     
@@ -46,6 +47,7 @@ class LeagueDetailsViewController: UIViewController {
         viewModel.bindEventstoLeagueDetailsViewController = { [weak self] in
             DispatchQueue.main.async {
                 self?.events = self?.viewModel.events ?? [Event]()
+                self?.upcomingEvents = self?.viewModel.upcomingEvents ?? [Event]()
                 self?.upcomingEventsCollectionView.reloadData()
                 self?.latestResultsCollectionView.reloadData()
                 self?.indicator.stopAnimating()
@@ -88,7 +90,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.upcomingEventsCollectionView:
-            return events.count
+            return upcomingEvents.count
         case self.latestResultsCollectionView:
             return events.count
         case self.teamsCollectionView:
@@ -104,9 +106,9 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventsCollectionViewCell.identifier, for: indexPath) as? UpcomingEventsCollectionViewCell else { return UpcomingEventsCollectionViewCell()}
             
     //        cell.upcomingEventsCellImageView.image = UIImage(systemName: "folder.fill")
-            cell.eventNameLabel.text = events[indexPath.row].strEvent
-            cell.eventDateLabel.text = events[indexPath.row].dateEventLocal
-            cell.eventTimeLabel.text = events[indexPath.row].strTimeLocal
+            cell.eventNameLabel.text = upcomingEvents[indexPath.row].strEvent
+            cell.eventDateLabel.text = upcomingEvents[indexPath.row].dateEventLocal
+            cell.eventTimeLabel.text = upcomingEvents[indexPath.row].strTimeLocal
             
             return cell
             

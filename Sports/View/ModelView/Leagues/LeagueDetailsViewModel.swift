@@ -14,10 +14,15 @@ class LeagueDetailsViewModel {
     var bindTeamstoLeagueDetailsViewController: (() -> ()) = {}
     
     var league: League?
+    var upcomingEvents: [Event]?
     
     var events : [Event]? {
         didSet {
             bindEventstoLeagueDetailsViewController()
+            // Filter for upcoming events
+            upcomingEvents = events?.filter {
+                isFutureDate(dateEvent: $0.dateEvent ?? "", strTime: $0.strTime ?? "")
+            }
         }
     }
     
@@ -29,9 +34,7 @@ class LeagueDetailsViewModel {
     
     func getAllEvents(forLeagueId: String) {
         NetworkService.fetchDecodableFromAPI(genericType: EventsResponse.self, urlStr: "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=\(forLeagueId)", callBack: {[weak self] (response) in
-            self?.events = response?.events.filter {
-                self?.isFutureDate(dateEvent: $0.dateEvent ?? "", strTime: $0.strTime ?? "") ?? false
-            }
+            self?.events = response?.events
         })
     }
     
