@@ -19,6 +19,7 @@ class LeagueDetailsViewController: UIViewController {
     var viewModel: LeagueDetailsViewModel!
     var events = [Event]()
     var upcomingEvents = [Event]()
+    var latestResults = [Event]()
     var teams = [Team]()
     var selectedLeague: League?
     
@@ -48,6 +49,7 @@ class LeagueDetailsViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.events = self?.viewModel.events ?? [Event]()
                 self?.upcomingEvents = self?.viewModel.upcomingEvents ?? [Event]()
+                self?.latestResults = self?.viewModel.latestResults ?? [Event]()
                 self?.upcomingEventsCollectionView.reloadData()
                 self?.latestResultsCollectionView.reloadData()
                 self?.indicator.stopAnimating()
@@ -92,7 +94,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
         case self.upcomingEventsCollectionView:
             return upcomingEvents.count
         case self.latestResultsCollectionView:
-            return events.count
+            return latestResults.count
         case self.teamsCollectionView:
             return teams.count
         default:
@@ -116,14 +118,14 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  LatestResultsCollectionViewCell.identifier, for: indexPath) as? LatestResultsCollectionViewCell else { return LatestResultsCollectionViewCell()}
             
-            cell.homeTeamLabel.text = events[indexPath.row].strHomeTeam
-            cell.awayTeamLabel.text = events[indexPath.row].strAwayTeam
-            cell.homeScoreLabel.text = events[indexPath.row].intHomeScore
-            cell.awayScoreLabel.text = events[indexPath.row].intAwayScore
-            cell.dateLabel.text = events[indexPath.row].dateEventLocal
-            cell.timeLabel.text = events[indexPath.row].strTimeLocal
+            cell.homeTeamLabel.text = latestResults[indexPath.row].strHomeTeam
+            cell.awayTeamLabel.text = latestResults[indexPath.row].strAwayTeam
+            cell.homeScoreLabel.text = latestResults[indexPath.row].intHomeScore
+            cell.awayScoreLabel.text = latestResults[indexPath.row].intAwayScore
+            cell.dateLabel.text = latestResults[indexPath.row].dateEventLocal
+            cell.timeLabel.text = latestResults[indexPath.row].strTimeLocal
             
-            let imageUrl = URL(string: events[indexPath.row].strThumb ?? "")
+            let imageUrl = URL(string: latestResults[indexPath.row].strThumb ?? "")
             cell.latestResultsImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "versusIcon"))
             
             return cell

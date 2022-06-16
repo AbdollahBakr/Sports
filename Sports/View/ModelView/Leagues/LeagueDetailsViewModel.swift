@@ -15,14 +15,22 @@ class LeagueDetailsViewModel {
     
     var league: League?
     var upcomingEvents: [Event]?
+    var latestResults: [Event]?
     
     var events : [Event]? {
         didSet {
-            bindEventstoLeagueDetailsViewController()
+            
             // Filter for upcoming events
             upcomingEvents = events?.filter {
                 isFutureDate(dateEvent: $0.dateEvent ?? "", strTime: $0.strTime ?? "")
             }
+            // Filter for latest results
+            latestResults = events?.filter {
+                !isFutureDate(dateEvent: $0.dateEvent ?? "", strTime: $0.strTime ?? "")
+            }.reversed()
+            
+            // Bind data to view controller
+            bindEventstoLeagueDetailsViewController()
         }
     }
     
