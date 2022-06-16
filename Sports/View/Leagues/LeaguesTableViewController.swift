@@ -67,6 +67,10 @@ class LeaguesTableViewController: UITableViewController {
         cell.leagueNameLabel.text = leagues[indexPath.row].strLeague
         cell.youtubeStr = leagues[indexPath.row].strYoutube
         
+        // Hide youtube button if there is no associated youtube link
+        if (cell.youtubeStr ?? "").isEmpty {
+            cell.youtubeButton.isHidden = true
+        }
 
         // Set cell imageView with league badge
         let imageUrl = URL(string: leagues[indexPath.row].strBadge!)

@@ -230,10 +230,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzO-vi-7h2">
-                                <rect key="frame" x="348.5" y="64" width="45.5" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="Add to favorites" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzO-vi-7h2">
+                                <rect key="frame" x="322" y="64" width="72" height="62"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="addToFavorites"/>
                                 <connections>
                                     <action selector="addLeagueToFavorites:" destination="pyd-xU-RlU" eventType="touchUpInside" id="eTn-7m-l80"/>
                                 </connections>
@@ -465,7 +465,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="addToFavorites" width="48" height="48"/>
         <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">

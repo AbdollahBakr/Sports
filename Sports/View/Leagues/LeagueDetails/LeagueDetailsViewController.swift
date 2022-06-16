@@ -122,7 +122,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             cell.timeLabel.text = events[indexPath.row].strTimeLocal
             
             let imageUrl = URL(string: events[indexPath.row].strThumb ?? "")
-            cell.latestResultsImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))
+            cell.latestResultsImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "versusIcon"))
             
             return cell
             

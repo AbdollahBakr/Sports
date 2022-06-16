@@ -23,18 +23,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2s-3V-XsG">
-                        <rect key="frame" x="95" y="25" width="170" height="20.5"/>
+                        <rect key="frame" x="95" y="25" width="149" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fld-fg-ua8">
-                        <rect key="frame" x="285" y="19.5" width="30" height="31"/>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="Go to youtube page" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fld-fg-ua8">
+                        <rect key="frame" x="264" y="20" width="40" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="pCe-6P-nmu"/>
+                            <constraint firstAttribute="height" constant="30" id="6D6-vr-Snf"/>
+                            <constraint firstAttribute="width" constant="40" id="pCe-6P-nmu"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="link.icloud.fill" catalog="system"/>
+                        <buttonConfiguration key="configuration" style="plain" image="youtubeButton"/>
                         <connections>
                             <action selector="youtubeLinkButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="99P-td-Ij2"/>
                         </connections>
@@ -43,7 +44,7 @@
                 <constraints>
                     <constraint firstItem="fMW-OH-sHL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="8iD-yX-aq2"/>
                     <constraint firstItem="fMW-OH-sHL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Cc0-TA-TCd"/>
-                    <constraint firstAttribute="trailing" secondItem="fld-fg-ua8" secondAttribute="trailing" constant="5" id="OJG-GV-mB1"/>
+                    <constraint firstAttribute="trailing" secondItem="fld-fg-ua8" secondAttribute="trailing" constant="16" id="OJG-GV-mB1"/>
                     <constraint firstItem="fld-fg-ua8" firstAttribute="leading" secondItem="h2s-3V-XsG" secondAttribute="trailing" constant="20" id="Pon-jM-Grv"/>
                     <constraint firstItem="h2s-3V-XsG" firstAttribute="leading" secondItem="fMW-OH-sHL" secondAttribute="trailing" constant="20" id="Tkg-lt-1BH"/>
                     <constraint firstItem="h2s-3V-XsG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bLj-y9-4YR"/>
@@ -55,11 +56,12 @@
             <connections>
                 <outlet property="leagueCellImageView" destination="fMW-OH-sHL" id="CKV-XY-KSE"/>
                 <outlet property="leagueNameLabel" destination="h2s-3V-XsG" id="e8P-Pg-6nH"/>
+                <outlet property="youtubeButton" destination="fld-fg-ua8" id="wKa-op-hkI"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="131.58482142857142"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="link.icloud.fill" catalog="system" width="128" height="88"/>
+        <image name="youtubeButton" width="48" height="48"/>
     </resources>
 </document>

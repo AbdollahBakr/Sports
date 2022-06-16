@@ -81,7 +81,6 @@ class LeagueDetailsViewModel {
     // Filter upcoming events
     func isFutureDate(dateEvent: String, strTime: String) -> Bool {
         let dateStr = dateEvent + " " + strTime
-        print(dateStr)
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"

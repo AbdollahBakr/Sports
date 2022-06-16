@@ -12,9 +12,8 @@ class LeagueTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leagueCellImageView: UIImageView!
     @IBOutlet weak var leagueNameLabel: UILabel!
-    
-    @IBOutlet var playerView: YTPlayerView!
-    
+    @IBOutlet weak var youtubeButton: UIButton!
+        
     static let identifier = "LeagueTableViewCell"
     var delegate: LeagueTableViewCellDelegate? // Make it weak var
     var youtubeStr: String?
@@ -22,6 +21,7 @@ class LeagueTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        youtubeButton.imageView?.contentMode = .scaleAspectFit
         
     }
 
