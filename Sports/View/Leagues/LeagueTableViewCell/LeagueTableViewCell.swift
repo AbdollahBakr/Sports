@@ -15,14 +15,11 @@ class LeagueTableViewCell: UITableViewCell {
     @IBOutlet weak var youtubeButton: UIButton!
         
     static let identifier = "LeagueTableViewCell"
-    var delegate: LeagueTableViewCellDelegate? // Make it weak var
+    var delegate: LeagueTableViewCellDelegate?
     var youtubeStr: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        youtubeButton.imageView?.contentMode = .scaleAspectFit
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,6 +29,7 @@ class LeagueTableViewCell: UITableViewCell {
     }
     
     @IBAction func youtubeLinkButton(_ sender: UIButton) {
+        // Delegate the responsibility of button action to LeagueTableView
         delegate?.didTapYoutubeButton(with: youtubeStr ?? "")
     }
 }

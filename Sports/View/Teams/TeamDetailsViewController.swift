@@ -9,7 +9,6 @@ import UIKit
 
 class TeamDetailsViewController: UIViewController {
     
-//    @IBOutlet weak var teamBannerImageView: UIImageView!
     @IBOutlet weak var teamBadgeImageView: UIImageView!
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var teamCountryLabel: UILabel!
@@ -22,32 +21,17 @@ class TeamDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Configure the team details UI
         teamNameLabel.text = selectedTeam?.strTeam
         teamCountryLabel.text = selectedTeam?.strCountry
         teamSinceLabel.text = selectedTeam?.intFormedYear
         teamSportLabel.text = selectedTeam?.strSport
         teamLeagueLabel.text = selectedTeam?.strLeague
         
-        // Banner
-//        let bannerUrl = URL(string: selectedTeam?.strTeamBanner ?? "")
-//        teamBannerImageView.kf.setImage(with: bannerUrl, placeholder: UIImage(named: "sportsPlaceholder"))
-        
-        // Badge
+        // Team Badge
         let badgeUrl = URL(string: selectedTeam?.strTeamBadge ?? "")
         teamBadgeImageView.kf.setImage(with: badgeUrl, placeholder: UIImage(named: "sportsPlaceholder"))
 
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

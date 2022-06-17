@@ -14,19 +14,25 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     @IBOutlet weak var addToFavoritesButton: UIButton!
     
-    // Properties
+    // View Properties
     let indicator = UIActivityIndicatorView(style: .large)
     var viewModel: LeagueDetailsViewModel!
+    
+    // Event Properties
     var events = [Event]()
     var upcomingEvents = [Event]()
     var latestResults = [Event]()
+    
+    // Teams
     var teams = [Team]()
+    
+    // Selected League
     var selectedLeague: League?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setting the delegate and data source of the collection views
         upcomingEventsCollectionView.delegate = self
         upcomingEventsCollectionView.dataSource = self
         latestResultsCollectionView.delegate = self
@@ -44,6 +50,7 @@ class LeagueDetailsViewController: UIViewController {
         indicator.startAnimating()
         
         // Initialize the viewModel and set the binding
+        // Bind Events
         viewModel = LeagueDetailsViewModel()
         viewModel.bindEventstoLeagueDetailsViewController = { [weak self] in
             DispatchQueue.main.async {
@@ -55,6 +62,7 @@ class LeagueDetailsViewController: UIViewController {
                 self?.indicator.stopAnimating()
             }
         }
+        // Bind Teams
         viewModel.bindTeamstoLeagueDetailsViewController = { [weak self] in
             DispatchQueue.main.async {
                 self?.teams = self?.viewModel.teams ?? [Team]()
@@ -62,24 +70,16 @@ class LeagueDetailsViewController: UIViewController {
                 self?.indicator.stopAnimating()
             }
         }
+        
         // Fetch all events
         viewModel.getAllEvents(forLeagueId: selectedLeague?.idLeague ?? "")
         // Fetch all teams
         viewModel.getAllTeams(forLeague: selectedLeague?.strLeague ?? "")
+        
         // Hide addToFavorites button if selectedLeague is a favorite league
         addToFavoritesButton.isHidden = viewModel.isFavoriteLeague(league: selectedLeague ?? League())
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func addLeagueToFavorites(_ sender: Any) {
         viewModel.saveLeagueToFavorites(league: selectedLeague ?? League())
         let senderButton = sender as! UIButton
@@ -88,34 +88,51 @@ class LeagueDetailsViewController: UIViewController {
     
 }
 
+
+
 extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    // Return the number of items for each collection view based on their bound data
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         switch collectionView {
+            // Upcoming Events
         case self.upcomingEventsCollectionView:
             return upcomingEvents.count
+            
+            // Latest Results
         case self.latestResultsCollectionView:
             return latestResults.count
+            
+            // Teams
         case self.teamsCollectionView:
             return teams.count
+            
         default:
-            return 5
+            return 0
         }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // Upcoming Events Cell initialization and configuration
         if collectionView == self.upcomingEventsCollectionView {
+            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventsCollectionViewCell.identifier, for: indexPath) as? UpcomingEventsCollectionViewCell else { return UpcomingEventsCollectionViewCell()}
             
-    //        cell.upcomingEventsCellImageView.image = UIImage(systemName: "folder.fill")
             cell.eventNameLabel.text = upcomingEvents[indexPath.row].strEvent
             cell.eventDateLabel.text = upcomingEvents[indexPath.row].dateEventLocal
             cell.eventTimeLabel.text = upcomingEvents[indexPath.row].strTimeLocal
             
             cell.layer.cornerRadius = 24
+            
             return cell
             
-        } else if collectionView == self.latestResultsCollectionView {
+        }
+        
+        // Latest Results Cell initialization and configuration
+        else if collectionView == self.latestResultsCollectionView {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  LatestResultsCollectionViewCell.identifier, for: indexPath) as? LatestResultsCollectionViewCell else { return LatestResultsCollectionViewCell()}
             
@@ -128,12 +145,13 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
             
             
             cell.latestResultsImageView.image = UIImage(named: "versusIcon")
-//            let imageUrl = URL(string: latestResults[indexPath.row].strThumb ?? "")
-//            cell.latestResultsImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "versusIcon"))
             
             return cell
             
-        } else {
+        }
+        
+        // Teams Cell initialization and configuration
+        else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  TeamsCollectionViewCell.identifier, for: indexPath) as? TeamsCollectionViewCell else { return TeamsCollectionViewCell()}
             
             
@@ -151,22 +169,31 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
         
     }
     
+    
+    // Setting the width and height of the collection view cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         var width: CGFloat
         var height: CGFloat
         
+        // Upcoming events cell size
         if collectionView == self.upcomingEventsCollectionView
          {
             width = (collectionView.frame.size.width / 2) - 15
             height = collectionView.frame.size.height
            
-        } else if collectionView == self.latestResultsCollectionView {
+        }
+        
+        // Latest results cell size
+        else if collectionView == self.latestResultsCollectionView {
 
             width = collectionView.frame.size.width//1.5
             height = collectionView.frame.size.height//1.5
 
-        } else {
+        }
+        
+        // Teams cell size
+        else {
             height = collectionView.frame.size.height/1.5
             width = height
             
@@ -176,13 +203,17 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
         return CGSize(width: width, height: height)
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // Only if team cell is selected
         if collectionView == self.teamsCollectionView {
+            
+            // Initialize the team details view controller
             let detailsVC = storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
             detailsVC.selectedTeam = teams[indexPath.row]
 
+            // Present the initialized view controller
             present(detailsVC, animated: true)
         }
         

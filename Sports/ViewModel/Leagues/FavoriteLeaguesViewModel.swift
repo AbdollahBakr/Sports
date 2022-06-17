@@ -14,20 +14,25 @@ let managedContext = appDelegate.persistentContainer.viewContext
 
 class FavoriteLeaguesViewModel {
 
+    // Declare the binding closure
     var bindLeaguestoFavoriteLeaguesViewController: (() -> ()) = {}
     
     var leagues : [League]? {
         didSet {
+            // Bind data everytime leagues reloads/changes
             bindLeaguestoFavoriteLeaguesViewController()
         }
     }
     
+    // Fetch favorite leagues from the database
     func getFavoriteLeagues() {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LeagueEntity")
         do
         {
             let fetchedLeagues = try managedContext.fetch(fetchRequest)
             leagues = [League]()
+            
+            // Fill the leagues array from the database NSManagedObjects
             for fetchedLeague in fetchedLeagues {
                 var league = League()
                 league.idLeague = fetchedLeague.value(forKey: "idLeague") as? String
@@ -44,8 +49,12 @@ class FavoriteLeaguesViewModel {
         }
     }
     
+    // Delete a favorite league from the database
     func deleteLeagueFromFavorites(league: League) {
+        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LeagueEntity")
+        
+        // Set the predicate with the selected league id
         let selectedLeagueId = NSPredicate(format: "idLeague == %@", league.idLeague ?? "")
         fetchRequest.predicate = selectedLeagueId
         

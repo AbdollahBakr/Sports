@@ -15,11 +15,6 @@ class FavoriteLeaguesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         // Set Title to "Leagues"
         title = "Favorite Leagues"
         
@@ -47,47 +42,36 @@ class FavoriteLeaguesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // Reload the favorite leagues
         viewModel.getFavoriteLeagues()
         tableView.reloadData()
+        
+        // Handle the friendly message 'no favorites' if there are no favorite leagues yet
         notifyIfNoFavorites()
     }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        // Return one section
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         
+        // return the count of favorite leagues
         return leagues.count
     }
-    
-    func notifyIfNoFavorites(){
-        // Notify user if the favorites leagues are empty
-        if leagues.count == 0 {
-            // Add message label if there are no favorite leagues
-            let noFavoritesLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            
-            noFavoritesLabel.text          = "Favorite Leagues are empty. \nYou can add league to favorites in the details page"
-            noFavoritesLabel.textColor     = UIColor.darkGray
-            noFavoritesLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-            noFavoritesLabel.numberOfLines = 0
-            noFavoritesLabel.textAlignment = .center
-            tableView.backgroundView  = noFavoritesLabel
-        } else {
-            // Remove message label otherwise
-            tableView.backgroundView = nil
-        }
-    }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Initialize tableView cell as custom cell (LeagueTableViewCell)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LeagueTableViewCell.identifier, for: indexPath) as? LeagueTableViewCell else { return LeagueTableViewCell()}
 
-        // Configure the cell...
         // Set delegate for youtube button
         cell.delegate = self
+        
+        // Configure the cell...
         cell.leagueNameLabel.text = leagues[indexPath.row].strLeague
         cell.youtubeStr = leagues[indexPath.row].strYoutube
         
@@ -96,30 +80,23 @@ class FavoriteLeaguesTableViewController: UITableViewController {
             cell.youtubeButton.isHidden = true
         }
         
+        // Set the cell imageView
         let imageUrl = URL(string: leagues[indexPath.row].strBadge!)
-
-        cell.leagueCellImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))//), options: [.processor(processor)])
+        cell.leagueCellImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "sportsPlaceholder"))
         
-        // Configure cell image view
+        // Configure cell image view to be circular with border
         cell.leagueCellImageView.layer.cornerRadius = 35
         cell.leagueCellImageView.layer.masksToBounds = true
         cell.leagueCellImageView.layer.borderWidth = 2;
         cell.leagueCellImageView.layer.borderColor = CGColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // Set the height of the cell
         return 70
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -133,10 +110,7 @@ class FavoriteLeaguesTableViewController: UITableViewController {
             
             // Notify if there are no favorite leagues
             notifyIfNoFavorites()
-            
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -167,46 +141,44 @@ class FavoriteLeaguesTableViewController: UITableViewController {
             // Show alert
             self.present(alert, animated: true)
         }
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
+    
+    // This functions Handles the friendly message 'no favorites' if there are no favorite leagues yet
+    func notifyIfNoFavorites(){
+        // Notify user if the favorites leagues are empty
+        if leagues.count == 0 {
+            // Add message label if there are no favorite leagues
+            let noFavoritesLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            
+            // Configure the content and look of the message
+            noFavoritesLabel.text          = "Favorite Leagues are empty. \nYou can add league to favorites in the details page"
+            noFavoritesLabel.textColor     = UIColor.darkGray
+            noFavoritesLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+            noFavoritesLabel.numberOfLines = 0
+            noFavoritesLabel.textAlignment = .center
+            tableView.backgroundView  = noFavoritesLabel
+            
+        } else {
+            
+            // Remove message label otherwise
+            tableView.backgroundView = nil
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
 
 extension FavoriteLeaguesTableViewController: LeagueTableViewCellDelegate {
-    func didTapYoutubeButton(with link: String) {
-//        guard let url = URL(string: link) else { return }
-//        UIApplication.shared.open(url)
-        print("\(link)")
-//        print("\(getYoutubeId(youtubeUrl: link))")
-        let playerVC = storyboard?.instantiateViewController(withIdentifier: "YoutubeViewController") as! YoutubeViewController
-        playerVC.videoID = link
-        present(playerVC, animated: true)
-        
-    }
     
-    func getYoutubeId(youtubeUrl: String) -> String? {
-        return URLComponents(string: youtubeUrl)?.queryItems?.first(where: { $0.name == "v" })?.value
+    // Delegated youtube button action
+    func didTapYoutubeButton(with link: String) {
+        
+        // Initialize the youtube web view controller
+        let playerVC = storyboard?.instantiateViewController(withIdentifier: "YoutubeViewController") as! YoutubeViewController
+        
+        // Set the youtube page link
+        playerVC.youtubePageLink = link
+        
+        // Present the youtube web view
+        present(playerVC, animated: true)
     }
 }

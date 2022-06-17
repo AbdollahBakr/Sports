@@ -8,5 +8,7 @@
 import Foundation
 
 protocol LeagueTableViewCellDelegate {
+    
+    // The delegate method (navigate to the league youtube page)
     func didTapYoutubeButton(with link: String)
 }

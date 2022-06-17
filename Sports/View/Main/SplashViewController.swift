@@ -9,6 +9,7 @@ import UIKit
 
 class SplashViewController: UIViewController {
 
+    // Create an image view
     private let imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         imageView.image = UIImage(named: "sportsLogo")
@@ -17,34 +18,41 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add the image view as a subview
         view.addSubview(imageView)
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        // Center imageView just before the view will layout its subviews
         imageView.center = view.center
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            // Start animation
             self.animate()
         }
     }
     
     private func animate() {
+        
+        // Zoom animation
         UIView.animate(withDuration: 2) {
             let size = self.view.frame.size.width * 3
-            let diffX = size - self.view.frame.size.width
-            let diffY = self.view.frame.size.height - size
+            let deltaX = size - self.view.frame.size.width
+            let deltaY = self.view.frame.size.height - size
             
             self.imageView.frame = CGRect(
-            x: -(diffX/2),
-            y: diffY/2,
+            x: -(deltaX/2),
+            y: deltaY/2,
             width: size,
             height: size
             )
 
         }
+        
+        // Fade-out animation
         UIView.animate(withDuration: 1, animations: {
             self.imageView.alpha = 0
         }, completion: { done in
@@ -58,14 +66,5 @@ class SplashViewController: UIViewController {
             }
         })
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -12,27 +12,19 @@ class YoutubeViewController: UIViewController {
     
     @IBOutlet weak var youtubeWKWebView: WKWebView!
     
-    var videoID: String!
+    var youtubePageLink: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-//        playerView.load(withVideoId: videoID)
-        guard let myURL = URL(string: "https://\(videoID ?? "")") else { return }
+        // Initialize the youtube home page url
+        guard let myURL = URL(string: "https://\(youtubePageLink ?? "")") else { return }
+        
+        // Request the initialized url
         let myRequest = URLRequest(url: myURL)
+        
+        // Load the web view
         youtubeWKWebView.load(myRequest)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
