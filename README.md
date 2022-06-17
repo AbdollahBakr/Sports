@@ -11,7 +11,7 @@ This app consists of multiple screens as follows:
 ### Sports View
 This is the home view presenting all sports that exist in the [Sports API](https://www.thesportsdb.com) in a collection view with the image and name of the sport.
 
-### Leagus View
+### Leagues View
 If any sport is tapped, the app navigates to this view listing all leagues associated with the tapped sports. The leagues are presented in a table view, with each cell consisting of the league badge, name, and a button linked to the home youtube page of that league if exists in the API.
 
 ### League Details View
