@@ -12,7 +12,7 @@ class NetworkService {
     // Fetch decadable generic entity from the API
     static func fetchDecodableFromAPI<T: Decodable>(
         genericType: T.Type,
-        urlStr: String ,
+        urlStr: String,
         callBack: @escaping (T?) -> Void) {
             
             // Create url of the input string
